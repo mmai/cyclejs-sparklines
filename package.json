@@ -1,0 +1,46 @@
+{
+  "name": "cyclejs-sparklines",
+  "version": "1.0.0",
+  "description": "Beautiful and expressive Sparklines component for Cycle.js, inspired by react-sparklines",
+  "main": "build/index.js",
+  "directories": {
+    "src": "src/"
+  },
+  "scripts": {
+    "start": "cd demo && webpack-dev-server --progress",
+    "test": "mocha --compilers js:mocha-babel __tests__",
+    "test:watch": "mocha --compilers js:mocha-babel --watch __tests__",
+    "compile": "webpack",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmai/cyclejs-sparklines.git"
+  },
+  "keywords": [
+    "cyclejs",
+    "component",
+    "cyclejs-component",
+    "charts",
+    "sparklines",
+    "visualization"
+  ],
+  "author": "Henri Bourcereau <henri.bourcereau@gmail.com> (https://github.com/mmai)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmai/cyclejs-sparklines/issues"
+  },
+  "homepage": "https://github.com/mmai/cyclejs-sparklines#readme",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.25",
+    "chai": "^3.3.0",
+    "jsdom": "^3.1.2",
+    "mocha": "^2.3.3",
+    "mocha-babel": "^3.0.0",
+    "webpack": "^1.10.0",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
