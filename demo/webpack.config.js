@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack')
 
 module.exports = {
-    cache: true,
+  // cache: false,
     entry: './demo.js',
     output: {
         path: __dirname,
@@ -10,11 +10,7 @@ module.exports = {
         filename: 'demo.build.js',
     },
     module: {
-        loaders: [{
-            test: /\.jsx?$/,
-            exclude: /(node_modules)/,
-            loader: 'babel?stage=0'
-        }]
+        loaders: [{ test: /\.jsx?$/, exclude: /(node_modules)/, loader: 'babel-loader' }]
     },
     resolve: {
         extensions: ['', '.js', '.jsx']

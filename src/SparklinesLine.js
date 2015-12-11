@@ -1,48 +1,47 @@
-import React from 'react';
+/** @jsx hJSX */
 
-export default class SparklinesLine extends React.Component {
+import {Rx} from 'rx';
+import {h, svg} from '@cycle/dom';
 
-    static propTypes = {
-        color: React.PropTypes.string,
-        style: React.PropTypes.object
-    };
+export default function sparklinesLine (responses) {
+  let props$ = responses.props.getAll();
+  let vtree$ = props$.map(props => {
+      const { points, width, height, margin, color } = props;
+      let style = props.style || {};
 
-    static defaultProps = {
-        style: {}
-    };
+      const linePoints = points
+      .map((p) => [p.x, p.y])
+      .reduce((a, b) => a.concat(b));
 
-    render() {
-        const { points, width, height, margin, color, style } = this.props;
+      const closePolyPoints = [
+        points[points.length - 1].x, height - margin,
+        margin, height - margin,
+        margin, points[0].y
+      ];
 
-        const linePoints = points
-            .map((p) => [p.x, p.y])
-            .reduce((a, b) => a.concat(b));
-        const closePolyPoints = [
-            points[points.length - 1].x, height - margin,
-            margin, height - margin,
-            margin, points[0].y
-        ];
-        const fillPoints = linePoints.concat(closePolyPoints);
+      const fillPoints = linePoints.concat(closePolyPoints);
 
-        const lineStyle = {
-            stroke: color || style.stroke || 'slategray',
-            strokeWidth: style.strokeWidth || '1',
-            strokeLinejoin: style.strokeLinejoin || 'round',
-            strokeLinecap: style.strokeLinecap || 'round',
-            fill: 'none'
-        };
-        const fillStyle = {
-            stroke: style.stroke || 'none',
-            strokeWidth: '0',
-            fillOpacity: style.fillOpacity || '.1',
-            fill: color || style.fill || 'slategray'
-        };
+      const lineStyle = {
+        stroke: color || style.stroke || 'slategray',
+        strokeWidth: style.strokeWidth || '1',
+        strokeLinejoin: style.strokeLinejoin || 'round',
+        strokeLinecap: style.strokeLinecap || 'round',
+        fill: 'none'
+      };
+      const fillStyle = {
+        stroke: style.stroke || 'none',
+        strokeWidth: '0',
+        fillOpacity: style.fillOpacity || '.1',
+        fill: color || style.fill || 'slategray'
+      };
 
-        return (
-            <g>
-                <polyline points={fillPoints.join(' ')} style={fillStyle} />
-                <polyline points={linePoints.join(' ')} style={lineStyle} />
-            </g>
-        )
-    }
+      return svg('g', [
+          svg('polyline', {points:fillPoints.join(' '), style:fillStyle}),
+          svg('polyline', {points:linePoints.join(' '), style:lineStyle})
+        ]
+      )
+    });
+  return {
+    DOM: vtree$
+  };
 }
