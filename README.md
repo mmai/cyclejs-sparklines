@@ -1,6 +1,8 @@
 # Beautiful and expressive sparklines component for Cycle.js
 
-![](http://borisyankov.github.io/react-sparklines/img/dynamic.gif)
+This is a full port of the [react-sparklines](https://github.com/borisyankov/react-sparklines) component for Cycle.js .
+
+Live demos and docs: [mmai.github.io/cyclejs-sparklines/](http://mmai.github.io/cyclejs-sparklines/)
 
 ## Install
 
@@ -15,7 +17,6 @@ npm install
 npm start
 http://localhost:8080
 ```
-
 
 ## Use
 

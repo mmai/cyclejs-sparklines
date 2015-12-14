@@ -3,10 +3,10 @@ import {hJSX, h, svg} from '@cycle/dom';
 var UltraDeepClone = require('udc');
 
 import SparklinesLine from './SparklinesLine';
-// import SparklinesBars from './SparklinesBars';
-// import SparklinesSpots from './SparklinesSpots';
-// import SparklinesReferenceLine from './SparklinesReferenceLine';
-// import SparklinesNormalBand from './SparklinesNormalBand';
+import SparklinesBars from './SparklinesBars';
+import SparklinesSpots from './SparklinesSpots';
+import SparklinesReferenceLine from './SparklinesReferenceLine';
+import SparklinesNormalBand from './SparklinesNormalBand';
 import DataProcessor from './DataProcessor';
 
 export function Sparklines(responses) {
@@ -36,5 +36,4 @@ export function Sparklines(responses) {
   };
 }
 
-export { Sparklines, SparklinesLine }
-// export { sparklinesComponent, sparklinesLineComponent, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, DataProcessor }
+export { Sparklines, SparklinesLine, SparklinesReferenceLine, SparklinesSpots, SparklinesBars, SparklinesNormalBand }

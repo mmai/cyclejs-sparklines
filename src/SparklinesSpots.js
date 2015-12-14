@@ -1,52 +1,48 @@
-import React from 'react';
+/** @jsx hJSX */
 
-export default class SparklinesSpots extends React.Component {
+import {Rx} from 'rx';
+import {h, svg} from '@cycle/dom';
 
-    static propTypes = {
-        size: React.PropTypes.number,
-        style: React.PropTypes.object,
-        spotColors: React.PropTypes.object
-    };
-
-    static defaultProps = {
-        size: 2,
-        spotColors: {
+export default function sparklinesSpots (responses) {
+  let props$ = responses.props.getAll();
+  let vtree$ = props$.map(props => {
+      const { points, width, height, style } = props;
+      let size = props.size || 2;
+      let spotColors = props.spotColors || {
             '-1': 'red',
             '0': 'black',
             '1': 'green'
-        }
-    };
+          };
 
-    lastDirection(points) {
+      let svgElems = [];
+      if (style) {
+        const startSpot = svg('circle', {
+            cx: points[0].x,
+            cy: points[0].y,
+            r: size,
+            style: style
+          });
 
-        Math.sign = Math.sign || function(x) { return x > 0 ? 1 : -1; }
+        svgElems.push(startSpot);
+      } 
 
-        return points.length < 2
-            ? 0
-            : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
-    }
+      const endSpot =  svg('circle', {
+          cx: points[points.length - 1].x,
+          cy: points[points.length - 1].y,
+          r: size,
+          style: style || { fill: spotColors[lastDirection(points)] }
+        });
+      svgElems.push(endSpot);
 
-    render() {
-
-        const { points, width, height, size, style, spotColors } = this.props;
-
-        const startSpot = <circle
-                            cx={points[0].x}
-                            cy={points[0].y}
-                            r={size}
-                            style={style} />
-
-        const endSpot = <circle
-                            cx={points[points.length - 1].x}
-                            cy={points[points.length - 1].y}
-                            r={size}
-                            style={style || { fill: spotColors[this.lastDirection(points)] }} />
-
-        return (
-            <g>
-                {style && startSpot}
-                {endSpot}
-            </g>
-        )
-    }
+      return svg('g', svgElems);
+    });
+  return {
+    DOM: vtree$
+  };
 }
+
+function lastDirection(points) {
+  Math.sign = Math.sign || function(x) { return x > 0 ? 1 : -1; };
+  return points.length < 2 ? 0 : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
+}
+
