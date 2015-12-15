@@ -1,1 +1,1 @@
-module.exports = require('./src/Sparklines.js');
+module.exports = require('./src/sparklines.js');

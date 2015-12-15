@@ -3,7 +3,7 @@
 import Rx from 'rx';
 import {run} from '@cycle/core';
 import {makeDOMDriver, h, hJSX} from '@cycle/dom';
-import { Sparklines, SparklinesLine, SparklinesReferenceLine, SparklinesSpots, SparklinesBars, SparklinesNormalBand } from '../src/Sparklines';
+import { sparklines, sparklinesLine, sparklinesReferenceLine, sparklinesSpots, sparklinesBars, sparklinesNormalBand } from '../src/sparklines';
 
 function boxMullerRandom () {
     let phase = false,
@@ -48,7 +48,7 @@ function header({DOM}) {
 }
 
 run(header, {
-    DOM: makeDOMDriver('#headersparklines', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesReferenceLine': SparklinesReferenceLine}) }
+    DOM: makeDOMDriver('#headersparklines', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesReferenceLine': sparklinesReferenceLine}) }
 );
 
 /** Simple **/
@@ -65,7 +65,7 @@ function simple({DOM}) {
 }
 
 run(simple, {
-    DOM: makeDOMDriver('#simple', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine}) }
+    DOM: makeDOMDriver('#simple', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine}) }
 );
 
 
@@ -95,7 +95,7 @@ const custColors = {
 
 for (let elem in custColors){
   run(makeCustomizable(custColors[elem]), {
-      DOM: makeDOMDriver('#' + elem, {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine}) }
+      DOM: makeDOMDriver('#' + elem, {'sparklines':sparklines, 'sparklinesLine':sparklinesLine}) }
   );
 }
 
@@ -112,7 +112,7 @@ function spots1({DOM}) {
 
   return { DOM: view$ }
 }
-run(spots1, { DOM: makeDOMDriver('#spots1', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesSpots':SparklinesSpots})});
+run(spots1, { DOM: makeDOMDriver('#spots1', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesSpots':sparklinesSpots})});
 
 function spots2({DOM}) {
   const view$ = Rx.Observable.just(
@@ -126,7 +126,7 @@ function spots2({DOM}) {
 
   return { DOM: view$ }
 }
-run(spots2, { DOM: makeDOMDriver('#spots2', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesSpots':SparklinesSpots})});
+run(spots2, { DOM: makeDOMDriver('#spots2', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesSpots':sparklinesSpots})});
 
 function spots3({DOM}) {
   const view$ = Rx.Observable.just(
@@ -140,7 +140,7 @@ function spots3({DOM}) {
 
   return { DOM: view$ }
 }
-run(spots3, { DOM: makeDOMDriver('#spots3', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesSpots':SparklinesSpots})});
+run(spots3, { DOM: makeDOMDriver('#spots3', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesSpots':sparklinesSpots})});
 
 /** Bounds **
 function bounds({DOM}) {
@@ -154,7 +154,7 @@ function bounds({DOM}) {
 
   return { DOM: view$ }
 }
-run(bounds, { DOM: makeDOMDriver('#bounds1', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesSpots':SparklinesSpots})});
+run(bounds, { DOM: makeDOMDriver('#bounds1', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesSpots':sparklinesSpots})});
 */
 
 function bars1({DOM}) {
@@ -168,7 +168,7 @@ function bars1({DOM}) {
 
   return { DOM: view$ }
 }
-run(bars1, { DOM: makeDOMDriver('#bars1', {'sparklines':Sparklines, 'sparklinesBars':SparklinesBars})});
+run(bars1, { DOM: makeDOMDriver('#bars1', {'sparklines':sparklines, 'sparklinesBars':sparklinesBars})});
 
 function bars2({DOM}) {
   const view$ = Rx.Observable.just(
@@ -182,7 +182,7 @@ function bars2({DOM}) {
 
   return { DOM: view$ }
 }
-run(bars2, { DOM: makeDOMDriver('#bars2', {'sparklines':Sparklines, 'sparklinesBars':SparklinesBars, 'sparklinesLine':SparklinesLine})});
+run(bars2, { DOM: makeDOMDriver('#bars2', {'sparklines':sparklines, 'sparklinesBars':sparklinesBars, 'sparklinesLine':sparklinesLine})});
 
 /** Dynamic **/
 
@@ -204,7 +204,7 @@ function dynamic1({DOM, DataSource}) {
   return { DOM: view$ }
 }
 run(dynamic1, {
-    DOM: makeDOMDriver('#dynamic1', {'sparklines':Sparklines, 'sparklinesSpots':SparklinesSpots, 'sparklinesLine':SparklinesLine}),
+    DOM: makeDOMDriver('#dynamic1', {'sparklines':sparklines, 'sparklinesSpots':sparklinesSpots, 'sparklinesLine':sparklinesLine}),
     DataSource: makeDataSourceDriver 
   });
 
@@ -221,7 +221,7 @@ function dynamic2({DOM, DataSource}) {
   return { DOM: view$ }
 }
 run(dynamic2, {
-    DOM: makeDOMDriver('#dynamic2', {'sparklines':Sparklines, 'sparklinesBars':SparklinesBars, 'sparklinesLine':SparklinesLine}),
+    DOM: makeDOMDriver('#dynamic2', {'sparklines':sparklines, 'sparklinesBars':sparklinesBars, 'sparklinesLine':sparklinesLine}),
     DataSource: makeDataSourceDriver 
   });
 
@@ -237,7 +237,7 @@ function dynamic3({DOM, DataSource}) {
   return { DOM: view$ }
 }
 run(dynamic3, {
-    DOM: makeDOMDriver('#dynamic3', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine}),
+    DOM: makeDOMDriver('#dynamic3', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine}),
     DataSource: makeDataSourceDriver 
   });
 
@@ -253,7 +253,7 @@ function dynamic4({DOM, DataSource}) {
   return { DOM: view$ }
 }
 run(dynamic4, {
-    DOM: makeDOMDriver('#dynamic4', {'sparklines':Sparklines, 'sparklinesBars':SparklinesBars}),
+    DOM: makeDOMDriver('#dynamic4', {'sparklines':sparklines, 'sparklinesBars':sparklinesBars}),
     DataSource: makeDataSourceDriver 
   });
 
@@ -284,7 +284,7 @@ const refTypes = {
 
 for (let elem in refTypes){
   run(makeReference(refTypes[elem]), {
-      DOM: makeDOMDriver('#' + elem, {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesReferenceLine': SparklinesReferenceLine}) }
+      DOM: makeDOMDriver('#' + elem, {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesReferenceLine': sparklinesReferenceLine}) }
   );
 }
 
@@ -300,7 +300,7 @@ function referenceline6({DOM}) {
   return { DOM: view$ }
 }
 run(referenceline6, {
-    DOM: makeDOMDriver('#referenceline6', {'sparklines':Sparklines, 'sparklinesBars':SparklinesBars, 'sparklinesReferenceLine': SparklinesReferenceLine})
+    DOM: makeDOMDriver('#referenceline6', {'sparklines':sparklines, 'sparklinesBars':sparklinesBars, 'sparklinesReferenceLine': sparklinesReferenceLine})
   });
 
 /** Normal band **/
@@ -316,7 +316,7 @@ function normalband1({DOM}) {
   return { DOM: view$ }
 }
 run(normalband1, {
-    DOM: makeDOMDriver('#normalband1', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesNormalBand': SparklinesNormalBand})
+    DOM: makeDOMDriver('#normalband1', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesNormalBand': sparklinesNormalBand})
   });
 
 function normalband2({DOM}) {
@@ -332,17 +332,17 @@ function normalband2({DOM}) {
   return { DOM: view$ }
 }
 run(normalband2, {
-    DOM: makeDOMDriver('#normalband2', {'sparklines':Sparklines, 'sparklinesLine':SparklinesLine, 'sparklinesNormalBand': SparklinesNormalBand, 'sparklinesReferenceLine': SparklinesReferenceLine})
+    DOM: makeDOMDriver('#normalband2', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine, 'sparklinesNormalBand': sparklinesNormalBand, 'sparklinesReferenceLine': sparklinesReferenceLine})
   });
 
 /** Real world examples **/
 const allSparkElements = {
-  'sparklines':Sparklines,
-  'sparklinesLine':SparklinesLine,
-  'sparklinesSpots':SparklinesSpots,
-  'sparklinesBars':SparklinesBars,
-  'sparklinesNormalBand': SparklinesNormalBand,
-  'sparklinesReferenceLine': SparklinesReferenceLine
+  'sparklines':sparklines,
+  'sparklinesLine':sparklinesLine,
+  'sparklinesSpots':sparklinesSpots,
+  'sparklinesBars':sparklinesBars,
+  'sparklinesNormalBand': sparklinesNormalBand,
+  'sparklinesReferenceLine': sparklinesReferenceLine
 };
 
 function realworld1({DOM}) {

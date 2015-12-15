@@ -1,6 +1,7 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 Boris Yankov
+Copyright (c) 2015 Boris Yankov for the original react-sparklines code
+Copyright (c) 2015 Henri Bourcereau for the cycle.js adaptation
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -209,7 +209,7 @@
 import Rx from 'rx';
 import {run} from '@cycle/core';
 import {makeDOMDriver, h, hJSX} from '@cycle/dom';
-import { Sparklines, sparklinesSpots, SparklinesLine } from 'cyclejs-sparklines';
+import { sparklines, sparklinesSpots, sparklinesLine } from 'cyclejs-sparklines';
 
 function makeDataSourceDriver(){
   return Rx.Observable.interval(100)
@@ -230,8 +230,8 @@ function dynamic1({DOM, DataSource}) {
 }
 run(dynamic1, {
     DOM: makeDOMDriver('#dynamic1', {
-      'sparklines':Sparklines,
-      'sparklinesSpots':SparklinesSpots,
+      'sparklines':sparklines,
+      'sparklinesSpots':sparklinesSpots,
       'sparklinesLine':sparklinesLine
       }),
     DataSource: makeDataSourceDriver 

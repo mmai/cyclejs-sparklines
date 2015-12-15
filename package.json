@@ -1,17 +1,25 @@
 {
   "name": "cyclejs-sparklines",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Beautiful and expressive Sparklines component for Cycle.js, inspired by react-sparklines",
-  "main": "build/index.js",
+  "main": "lib/sparklines.js",
   "directories": {
     "src": "src/"
   },
   "scripts": {
+    "eslint": "eslint src/",
     "start": "cd demo && webpack-dev-server -d --progress",
-    "test": "mocha --compilers js:mocha-babel __tests__",
-    "test:watch": "mocha --compilers js:mocha-babel --watch __tests__",
-    "compile": "webpack",
-    "prepublish": "npm run compile"
+    "test-node": "mocha --compilers js:mocha-babel test",
+    "test-browser": "",
+    "test:watch": "mocha --compilers js:mocha-babel --watch test",
+    "test": "npm run eslint && npm run test-node && npm run test-browser",
+    "precompile-lib": "rm -rf lib/ && mkdir -p lib",
+    "compile-lib": "babel -d lib/ src/",
+    "prepublish": "npm run compile-lib",
+    "release": "npm run release-patch",
+    "release-patch": "git checkout master && npm version patch && git push origin master --tags && npm publish --access=public",
+    "release-minor": "git checkout master && npm version minor && git push origin master --tags && npm publish --access=public",
+    "release-major": "git checkout master && npm version major && git push origin master --tags && npm publish --access=public"
   },
   "repository": {
     "type": "git",
@@ -30,25 +38,29 @@
   "bugs": {
     "url": "https://github.com/mmai/cyclejs-sparklines/issues"
   },
-  "homepage": "https://github.com/mmai/cyclejs-sparklines#readme",
+  "homepage": "https://github.com/mmai/cyclejs-sparklines",
   "devDependencies": {
+    "@cycle/core": "^5.0.1",
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
     "babel-loader": "^5.3.2",
     "babel-runtime": "^5.8.25",
     "chai": "^3.3.0",
+    "eslint": "^1.10.3",
+    "eslint-config-cycle": "^3.1.0",
+    "eslint-plugin-cycle": "^1.0.2",
+    "eslint-plugin-no-class": "^0.1.0",
     "jsdom": "^3.1.2",
     "mocha": "^2.3.3",
     "mocha-babel": "^3.0.0",
+    "rx": "^4.0.7",
     "vdom-parser": "^1.2.1",
     "virtual-dom": "^2.1.1",
-    "webpack": "^1.10.0",
-    "webpack-dev-server": "^1.10.1"
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "@cycle/core": "^5.0.1",
     "@cycle/dom": "^7.1.1",
-    "rx": "^4.0.7",
     "udc": "^1.0.1"
   }
 }

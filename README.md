@@ -1,6 +1,6 @@
 # Beautiful and expressive sparklines component for Cycle.js
 
-This is a full port of the [react-sparklines](https://github.com/borisyankov/react-sparklines) component for Cycle.js .
+This is a full port of the [react-sparklines](https://github.com/borisyankov/react-sparklines) component for [Cycle.js](http://cycle.js.org/).
 
 Live demos and docs: [mmai.github.io/cyclejs-sparklines/](http://mmai.github.io/cyclejs-sparklines/)
 
@@ -20,11 +20,32 @@ http://localhost:8080
 
 ## Use
 
-![](http://borisyankov.github.io/react-sparklines/img/basic.png)
+![](http://mmai.github.io/cyclejs-sparklines/img/basic.png)
 
 ```
-<Sparklines data={[5, 10, 5, 20, 8, 15]} limit={5} width={100} height={20} margin={5}>
-</Sparklines>
+/** @jsx hJSX */
+
+import Rx from 'rx'
+import {run} from '@cycle/core'
+import {makeDOMDriver, h, hJSX} from '@cycle/dom'
+import { sparklines, sparklinesLine } from 'cyclejs-sparklines'
+
+function main({DOM}) {
+  const view$ = Rx.Observable.just(
+    <span>
+      <sparklines data={[5,10,5,20,8,15,16,19,13,14,12]}>
+          <sparklinesLine />
+      </sparklines>
+    </span>
+  );
+
+  return { DOM: view$ }
+}
+
+run(main, {
+  DOM: makeDOMDriver('#app', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine})
+  });
+
 ```
 
 Sparklines component is a container with the following properties:
@@ -39,10 +60,9 @@ margin - optional, offset the chart
 
 min, max - optional, bound the chart
 
-
 #### Basic Sparkline
 
-![](http://borisyankov.github.io/react-sparklines/img/customizable.png)
+![](http://mmai.github.io/cyclejs-sparklines/img/customizable.png)
 
 ```
 <Sparklines data={[5, 10, 5, 20]}>
@@ -52,7 +72,7 @@ min, max - optional, bound the chart
 
 #### Bars
 
-![](http://borisyankov.github.io/react-sparklines/img/bars.png)
+![](http://mmai.github.io/cyclejs-sparklines/img/bars.png)
 
 
 ```
@@ -63,7 +83,7 @@ min, max - optional, bound the chart
 
 #### Spots
 
-![](http://borisyankov.github.io/react-sparklines/img/spots.png)
+![](http://mmai.github.io/cyclejs-sparklines/img/spots.png)
 
 
 ```
@@ -75,7 +95,7 @@ min, max - optional, bound the chart
 
 #### Reference Line
 
-![](http://borisyankov.github.io/react-sparklines/img/referenceline.png)
+![](http://mmai.github.io/cyclejs-sparklines/img/referenceline.png)
 
 
 ```
@@ -87,7 +107,7 @@ min, max - optional, bound the chart
 
 #### Normal Band
 
-![](http://borisyankov.github.io/react-sparklines/img/normalband.png)
+![](http://mmai.github.io/cyclejs-sparklines/img/normalband.png)
 
 
 ```
