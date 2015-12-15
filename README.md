@@ -65,9 +65,9 @@ min, max - optional, bound the chart
 ![](http://mmai.github.io/cyclejs-sparklines/img/customizable.png)
 
 ```
-<Sparklines data={[5, 10, 5, 20]}>
-  <SparklinesLine color="blue" />
-</Sparklines>
+<sparklines data={[5, 10, 5, 20]}>
+  <sparklinesLine color="blue" />
+</sparklines>
 ```
 
 #### Bars
@@ -76,9 +76,9 @@ min, max - optional, bound the chart
 
 
 ```
-<Sparklines data={[5, 10, 5, 20]}>
-  <SparklinesBars />
-</Sparklines>
+<sparklines data={[5, 10, 5, 20]}>
+  <sparklinesBars />
+</sparklines>
 ```
 
 #### Spots
@@ -87,10 +87,10 @@ min, max - optional, bound the chart
 
 
 ```
-<Sparklines data={sampleData}>
-    <SparklinesLine style={{ fill: "none" }} />
-    <SparklinesSpots />
-</Sparklines>
+<sparklines data={sampleData}>
+    <sparklinesLine style={{ fill: "none" }} />
+    <sparklinesSpots />
+</sparklines>
 ```
 
 #### Reference Line
@@ -99,10 +99,10 @@ min, max - optional, bound the chart
 
 
 ```
-<Sparklines data={sampleData}>
-    <SparklinesLine />
-    <SparklinesReferenceLine type="mean" />
-</Sparklines>
+<sparklines data={sampleData}>
+    <sparklinesLine />
+    <sparklinesReferenceLine type="mean" />
+</sparklines>
 ```
 
 #### Normal Band
@@ -111,8 +111,8 @@ min, max - optional, bound the chart
 
 
 ```
-<Sparklines data={sampleData}>
-    <SparklinesLine style={{ fill: "none" }}/>
-    <SparklinesNormalBand />
-</Sparklines>
+<sparklines data={sampleData}>
+    <sparklinesLine style={{ fill: "none" }}/>
+    <sparklinesNormalBand />
+</sparklines>
 ```
