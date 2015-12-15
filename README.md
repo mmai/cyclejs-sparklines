@@ -1,4 +1,4 @@
-# Beautiful and expressive sparklines component for Cycle.js
+# Sparklines component for Cycle.js
 
 This is a full port of the [react-sparklines](https://github.com/borisyankov/react-sparklines) component for [Cycle.js](http://cycle.js.org/).
 
@@ -22,7 +22,7 @@ http://localhost:8080
 
 ![](http://mmai.github.io/cyclejs-sparklines/img/basic.png)
 
-```
+```javascript
 /** @jsx hJSX */
 
 import Rx from 'rx'
