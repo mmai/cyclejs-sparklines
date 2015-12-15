@@ -48,17 +48,14 @@ run(main, {
 
 ```
 
-Sparklines component is a container with the following properties:
+The sparkline component accept the following attributes:
+  * data: the data set used to build the sparkline
+  * limit: how many data points to display at once (optional) 
+  * width, height: dimensions of the component
+  * margin: offset the chart (optional) 
+  * min, max: bound the chart (optional) 
 
-data - the data set used to build the sparkline
-
-limit - optional, how many data points to display at once
-
-width, height - dimensions of the component
-
-margin - optional, offset the chart
-
-min, max - optional, bound the chart
+See the examples on [mmai.github.io/cyclejs-sparklines/](http://mmai.github.io/cyclejs-sparklines/) for a complete list of parameters.
 
 #### Basic Sparkline
 
