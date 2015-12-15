@@ -108,13 +108,32 @@
         <div class="row">
             <div id="simple"></div>
             <pre class="prettyprint">
-  <xmp>
   <span>
+/** @jsx hJSX */
+
+import Rx from 'rx'
+import {run} from '@cycle/core'
+import {makeDOMDriver, h, hJSX} from '@cycle/dom'
+import { sparklines, sparklinesLine } from 'cyclejs-sparklines'
+
+function main({DOM}) {
+  const view$ = Rx.Observable.just(
+  <xmp>
+    <span>
       <sparklines data={[5,10,5,20,8,15,16,19,13,14,12]}>
           <sparklinesLine />
       </sparklines>
-  </span>
+    </span>
   </xmp>
+  );
+
+  return { DOM: view$ }
+}
+
+run(main, {
+  DOM: makeDOMDriver('#app', {'sparklines':sparklines, 'sparklinesLine':sparklinesLine})
+  });
+  </span>
            </pre>
         </div>
 
