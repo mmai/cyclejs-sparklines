@@ -1,5 +1,7 @@
 # Sparklines component for Cycle.js
 
+Notice: this library uses a now deprecated version of cycle-dom
+
 This is a full port of the [react-sparklines](https://github.com/borisyankov/react-sparklines) component for [Cycle.js](http://cycle.js.org/).
 
 Live demos and docs: [mmai.github.io/cyclejs-sparklines/](http://mmai.github.io/cyclejs-sparklines/)
